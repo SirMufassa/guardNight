@@ -13,7 +13,7 @@ $(document).ready(function() {
                 row = `  <div class="sl-item" id=${[tableau.length-1]}>
                             <div class="sl-left bg-success"> <i class="fa fa-user"></i></div>
                             <div class="sl-right">
-                                <div><a href="#">Tiger Sroff</a> <span class="sl-date">5 minutes ago</span>
+                                <div><a href="#">${[doc.data().senderPhone]}</a> <span class="sl-date">5 minutes ago</span>
                                 </div>
                                 <div class="desc">Approve meeting with tiger
                                     <br><a href="javascript:void(0)"
