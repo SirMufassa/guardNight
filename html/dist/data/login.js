@@ -17,11 +17,11 @@ $(document).ready(function() {
         if (user) {
           // User is signed in, see docs for a list of available properties
           // https://firebase.google.com/docs/reference/js/firebase.User
-            console.log('is')
+            console.log('is log')
           var uid = user.uid;
           // ...
         } else {
-            console.log('is not')
+            console.log('is not loged')
           // User is signed out
           // ...
         }
