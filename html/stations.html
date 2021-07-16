@@ -23,6 +23,9 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+    <script src="dist/js/jquery-3.3.1.min.js"></script>
+
 </head>
 
 <body class="skin-default-dark fixed-layout">
@@ -169,62 +172,9 @@
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-body">
-                              <h5 class="card-title">Station Ruashi</h5>
-                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                              <a href="#" class="btn btn-outline-success">
-                                    <i class="fa fa-edit"></i></a>
-                              <a href="#" class="btn btn-outline-danger">
-                                    <i class="fa fa-trash"></i></a>
-                              </a>
-                            </div>
-                          </div>
-                    </div>
+                <div class="row" id="data">
+                    
 
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-body">
-                              <h5 class="card-title">Station Ruashi</h5>
-                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                              <a href="#" class="btn btn-outline-success">
-                                    <i class="fa fa-edit"></i></a>
-                              <a href="#" class="btn btn-outline-danger">
-                                    <i class="fa fa-trash"></i></a>
-                              </a>
-                            </div>
-                          </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-body">
-                              <h5 class="card-title">Station Ruashi</h5>
-                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                              <a href="#" class="btn btn-outline-success">
-                                    <i class="fa fa-edit"></i></a>
-                              <a href="#" class="btn btn-outline-danger">
-                                    <i class="fa fa-trash"></i></a>
-                              </a>
-                            </div>
-                          </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-body">
-                              <h5 class="card-title">Station Ruashi</h5>
-                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                              <a href="#" class="btn btn-outline-success">
-                                    <i class="fa fa-edit"></i></a>
-                              <a href="#" class="btn btn-outline-danger">
-                                    <i class="fa fa-trash"></i></a>
-                              </a>
-                            </div>
-                          </div>
-                    </div>
                 </div>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
@@ -268,6 +218,12 @@
     <script src="../assets/node_modules/sparkline/jquery.sparkline.min.js"></script>
     <!--Custom JavaScript -->
     <script src="dist/js/custom.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
+
+    <script src="dist/data/configuration.js"></script>
+    <script src="dist/data/stations.js"></script>
 </body>
 
 </html>
