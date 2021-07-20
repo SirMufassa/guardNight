@@ -8,6 +8,10 @@ $(document).ready(function() {
         .then((querySnapshot) => {
     
             querySnapshot.forEach((doc) => {
+
+                // avoid show the document with ID new, it's for debug purpose only
+                
+                if(doc.id === 'new') return;
                 tableau.push(1)
 
                 row = `  <div class="sl-item" id=${[tableau.length-1]}>
@@ -21,6 +25,12 @@ $(document).ready(function() {
                                         class="btn m-t-10 m-r-5 btn-rounded btn-outline-success" id="edit${[tableau.length-1]}">
                                         <i class="fa fa-play-circle-o"></i></a>
                                     </a>
+
+                                    <a href="javascript:void(0)"
+                                        class="btn m-t-10 m-r-5 btn-rounded btn-outline-warning">
+                                        <i class="fa fa-map"></i></a>
+                                    </a>
+
                                     <a href="javascript:void(0)"
                                         class="btn m-t-10 btn-rounded btn-outline-danger" id="trash${[tableau.length-1]}">
                                         <i class="fa fa-trash"></i></a>

@@ -14,15 +14,23 @@ $(document).ready(function() {
                 row = `  <div class="col-md-4">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">${[doc.data().designation]}</h5>
+                                    <h5 class="card-title"><a href="#" >${[doc.data().designation]}</a></h5>
                                     <p class="card-text"></p>
+
                                     <a href="#" class="btn btn-outline-success" data-toggle="modal" data-target="#${[doc.id]}">
                                             <i class="fa fa-edit"></i>
                                     </a>
+
+
+                                    <a href="#" class="btn btn-outline-warning">
+                                        <i class="fa fa-map"></i>
+                                    </a>
+
+
                                     <a href="#" class="btn btn-outline-danger" id="trash${[tableau.length-1]}">
                                             <i class="fa fa-trash"></i>
                                     </a>
-                                    </a>
+                                   
                                 </div>
                             </div>
                         </div> 
