@@ -198,6 +198,81 @@
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
+
+            <div class="container-fluid">
+                <button type="button" class="btn btn-primary" data-toggle="modal" aria-pressed="false" autocomplete="off" 
+                style=" position: absolute; bottom: 0; border-radius: 50%; margin-bottom: 5px;"
+                data-target="#exampleModal">
+                    <i class="fa fa-plus-square"></i>
+                </button>
+            </div>
+
+  
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ajout station Police</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <!-- <label class="col-md-12">De</label> -->
+                            <div class="col-md-12">
+                                <input type="text" placeholder="Designation" id="designation"
+                                    class="form-control form-control-line">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <!-- <label class="col-md-12">De</label> -->
+                            <div class="col-md-12">
+                                <input type="text" placeholder="Avenue" id="avenue"
+                                    class="form-control form-control-line">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <!-- <label class="col-md-12">De</label> -->
+                            <div class="col-md-12">
+                                <input type="text" placeholder="Code Station" id="stationcode"
+                                    class="form-control form-control-line">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <!-- <label class="col-md-12">De</label> -->
+                            <div class="col-md-12">
+                                <input type="text" placeholder="DP1" id="DP1"
+                                    class="form-control form-control-line">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <!-- <label class="col-md-12">De</label> -->
+                            <div class="col-md-12">
+                                <input type="text" placeholder="DP2" id="DP2"
+                                    class="form-control form-control-line">
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="ajouter">Save changes</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            
         </div>
         <!-- ============================================================== -->
         <!-- End Page wrapper  -->

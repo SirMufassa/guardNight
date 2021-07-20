@@ -15,13 +15,14 @@ $(document).ready(function() {
                             <div class="sl-right">
                                 <div><a href="#">${[doc.data().senderPhone]}</a> <span class="sl-date">5 minutes ago</span>
                                 </div>
-                                <div class="desc">Approve meeting with tiger
-                                    <br><a href="javascript:void(0)"
-                                        class="btn m-t-10 m-r-5 btn-rounded btn-outline-success">
+                                <div class="desc" id=${[doc.id]}>Approve meeting with tiger
+                                    <br>
+                                    <a href="javascript:void(0)"
+                                        class="btn m-t-10 m-r-5 btn-rounded btn-outline-success" id="edit${[tableau.length-1]}">
                                         <i class="fa fa-play-circle-o"></i></a>
                                     </a>
                                     <a href="javascript:void(0)"
-                                        class="btn m-t-10 btn-rounded btn-outline-danger">
+                                        class="btn m-t-10 btn-rounded btn-outline-danger" id="trash${[tableau.length-1]}">
                                         <i class="fa fa-trash"></i></a>
                                     </a> 
                                 </div>
@@ -31,6 +32,22 @@ $(document).ready(function() {
                 
                 $('#data').append(row)
                 // console.log(`${doc.id} => ${doc.data().avenue}`)
+
+                $(`#trash${[tableau.length-1]}`).click((e) => {
+                    console.log(doc.id)
+                     // confirmer
+                     let confirmAction = confirm("Are you sure to execute this action?")
+
+                     if (confirmAction) {
+                         supprimer(doc.id)
+                         console.log('trash ' + doc.id)
+                         alert("Action successfully executed")
+                     } else {
+                         alert("Action canceled")
+                     }
+
+                })
+
             })
         })
         
@@ -39,6 +56,18 @@ $(document).ready(function() {
         })
 
     //delete
+
+    function supprimer(id){
+        
+        db.collection("insec_audio").doc(id).delete()
+            .then((docRef) => {
+              console.log("Document deleted with ID: ", docRef.id);
+        })
+            .catch((error) => {
+              console.error("Error deleting document: ", error);
+        })
+
+    }
 
     //lecture
 
