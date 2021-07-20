@@ -50,7 +50,6 @@ $(document).ready(function() {
 
                      if (confirmAction) {
                          supprimer(doc.id)
-                         console.log('trash ' + doc.id)
                          alert("Action successfully executed")
                      } else {
                          alert("Action canceled")
@@ -71,10 +70,12 @@ $(document).ready(function() {
         
         db.collection("insec_audio").doc(id).delete()
             .then((docRef) => {
-              console.log("Document deleted with ID: ", docRef.id);
+              console.log("Document deleted")
+              alert("Document deleted")
         })
             .catch((error) => {
-              console.error("Error deleting document: ", error);
+              console.error("Error deleting document")
+              alert("Error deleting document")
         })
 
     }
