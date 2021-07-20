@@ -8,6 +8,7 @@ $(document).ready(function() {
         .then((querySnapshot) => {
     
             querySnapshot.forEach((doc) => {
+                console.log(doc.data().adress)
                 tableau.push(doc.id)
 
                 row = `  <div class="col-md-4">
@@ -40,29 +41,14 @@ $(document).ready(function() {
                                     
                                         <div class="form-group">
                                             <div class="col-md-12">
-                                                <input type="text" placeholder="Designation" id="designation${[doc.id]}"
+                                                <input type="text" placeholder="Designation" value="${[doc.data().designation]}" id="designation${[doc.id]}"
                                                     class="form-control form-control-line">
                                             </div>
                                         </div>
                 
                                         <div class="form-group">
                                             <div class="col-md-12">
-                                                <input type="text" placeholder="Avenue" id="avenue${[doc.id]}"
-                                                    class="form-control form-control-line">
-                                            </div>
-                                        </div>
-                
-                
-                                        <div class="form-group">
-                                            <div class="col-md-12">
-                                                <input type="text" placeholder="Code Station" id="stationcode${[doc.id]}"
-                                                    class="form-control form-control-line">
-                                            </div>
-                                        </div>
-                
-                                        <div class="form-group">
-                                            <div class="col-md-12">
-                                                <input type="text" placeholder="DP1" id="DP1${[doc.id]}"
+                                                <input type="text" placeholder="Avenue" value="" id="avenue${[doc.id]}"
                                                     class="form-control form-control-line">
                                             </div>
                                         </div>
@@ -70,7 +56,22 @@ $(document).ready(function() {
                 
                                         <div class="form-group">
                                             <div class="col-md-12">
-                                                <input type="text" placeholder="DP2" id="DP2${[doc.id]}"
+                                                <input type="text" placeholder="Code Station" value="${[doc.data().stationCode]}" id="stationcode${[doc.id]}"
+                                                    class="form-control form-control-line">
+                                            </div>
+                                        </div>
+                
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <input type="text" placeholder="DP1" value="${[doc.data().phones.DP1]}" id="DP1${[doc.id]}"
+                                                    class="form-control form-control-line">
+                                            </div>
+                                        </div>
+                
+                
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <input type="text" placeholder="DP2" value="${[doc.data().phones.DP1]}" id="DP2${[doc.id]}"
                                                     class="form-control form-control-line">
                                             </div>
                                         </div>
@@ -104,7 +105,6 @@ $(document).ready(function() {
                     if (confirmAction) {
                         e.preventDefault()
                         supprimer(doc.id)
-                        console.log('trash ' + doc.id)
                         alert("Action successfully executed")
                     } else {
                         e.preventDefault()
@@ -126,22 +126,24 @@ $(document).ready(function() {
         // Add a second document with a generated ID.
         db.collection("police").add({
 
-            adresse : { avenue : $("#avenue").val()}, // que contient une adresse, en dehors de l'avenue ?
+            // adress : { avenue : $("#avenue").val()}, // que contient une adress, en dehors de l'avenue ?
             designation : $("#designation").val(), // est-ce que unique ? 
             // geopoint : , // comment faire pour prendre les deux ? //simulation
             phones : {
                 DP1 : $("#DP1").val(),
                 DP2 : $("#DP2").val()
             },
-            stationCode : $("#stationCode").val(), // est-ce que automatique ?
+            stationCode : $("#stationcode").val(), // est-ce que automatique ?
 
         })
         .then((docRef) => {
             console.log("Document written with ID: ", docRef.id)
+            alert("Document written")
             // alert()
         })
         .catch((error) => {
             console.error("Error adding document: ", error)
+            alert("Error adding document")
             // alert()
         })
     }
@@ -156,21 +158,23 @@ $(document).ready(function() {
 
         db.collection("police").doc(id).update({
 
-            adresse : { avenue : $("#avenue" + id).val()}, // que contient une adresse, en dehors de l'avenue ?
+            // adress : { avenue : $("#avenue" + id).val()}, // que contient une adress, en dehors de l'avenue ?
             designation : $("#designation" + id).val(), // est-ce que unique ? 
             // geopoint : , // comment faire pour prendre les deux ? //simulation
             phones : {
                 DP1 : $("#DP1" + id).val(),
                 DP2 : $("#DP2" + id).val()
             },
-            stationCode : $("#stationCode" + id).val(), // est-ce que automatique ?
+            stationCode : $("#stationcode" + id).val(), // est-ce que automatique ?
 
         })
             .then((docRef) => {
-                console.log("Document updated with ID: ", docRef.id);
+                console.log("Document updated")
+                alert("Document updated")
             })
             .catch((error) => {
                 console.error("Error updating document: ", error);
+                alert("Error updating document")
             })
 
     }
