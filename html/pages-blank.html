@@ -17,6 +17,11 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
     <!-- Custom CSS -->
     <link href="dist/css/style.css" rel="stylesheet">
+
+    <script src="dist/js/jquery-3.3.1.min.js"></script>
+    
+    <script src="dist/data/test.js"></script>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -160,10 +165,14 @@
                 <!-- Bread crumb and right sidebar toggle -->
                 <!-- ============================================================== -->
                 <div class="row page-titles">
+
+                    
+
                     <div class="col-md-5 align-self-center">
                         <h4 class="text-themecolor">Blank Page</h4>
                     </div>
                     <div class="col-md-7 align-self-center text-right">
+                        
                         <div class="d-flex justify-content-end align-items-center">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
@@ -182,13 +191,41 @@
                 <!-- ============================================================== -->
                 <div class="row">
                     <div class="col-12">
+                        
                         <div class="card">
                             <div class="card-body">
-                                This is some text within a card block.
+                                <button type="button" class="btn btn-primary" data-toggle="modal" aria-pressed="false" autocomplete="off" 
+                                style=" position: absolute; bottom: 0; border-radius: 50%; margin-bottom: 5px;"
+                                data-target="#exampleModal">
+                                    <i class="fa fa-plus-square"></i>
+                                </button>
+
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel"> Voulez-vous vraiment supprimer cet élément ? </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                            <button type="button" class="btn btn-primary" id="confrmation">Confirmer</button>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <div id='element' class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12" style="position: fixed; bottom: 0; right: 0;">
+
+                </div>
+                
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->

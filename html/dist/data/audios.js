@@ -21,9 +21,16 @@ $(document).ready(function() {
                                 </div>
                                 <div class="desc" id=${[doc.id]}>Approve meeting with tiger
                                     <br>
-                                    <a href="javascript:void(0)"
-                                        class="btn m-t-10 m-r-5 btn-rounded btn-outline-success" id="edit${[tableau.length-1]}">
-                                        <i class="fa fa-play-circle-o"></i></a>
+
+                                        <audio controls>
+                                            <source src="test1.mp3" type="audio/mp3"> 
+                                        </audio>
+
+                                    <br>
+                                    
+                                    <a href="${doc.data().remotePath}" download="audio${[doc.data().senderPhone]}"
+                                        class="btn m-t-10 m-r-5 btn-rounded btn-outline-success" id="download${[tableau.length-1]}">
+                                        <i class="fa  fa-download"></i></a>
                                     </a>
 
                                     <a href="javascript:void(0)"
@@ -32,9 +39,28 @@ $(document).ready(function() {
                                     </a>
 
                                     <a href="javascript:void(0)"
-                                        class="btn m-t-10 btn-rounded btn-outline-danger" id="trash${[tableau.length-1]}">
+                                        class="btn m-t-10 btn-rounded btn-outline-danger" data-toggle="modal" data-target="#exampleModal${[tableau.length-1]}" id="${[tableau.length-1]}">
                                         <i class="fa fa-trash"></i></a>
                                     </a> 
+
+                                    <div class="modal fade" id="exampleModal${[tableau.length-1]}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel"> Voulez-vous vraiment supprimer cet élément ? </h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                        
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                                    <button type="button" class="btn btn-primary delete" id="trash${[tableau.length-1]}" data-dismiss="modal">Confirmer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -43,17 +69,17 @@ $(document).ready(function() {
                 $('#data').append(row)
                 // console.log(`${doc.id} => ${doc.data().avenue}`)
 
-                $(`#trash${[tableau.length-1]}`).click((e) => {
-                    console.log(doc.id)
-                     // confirmer
-                     let confirmAction = confirm("Are you sure to execute this action?")
+                // $(`#download${[tableau.length-1]}`).click((e) => {
+                //     e.preventDefault()
+                //     window.location = doc.data().remotPath
+                // })
 
-                     if (confirmAction) {
-                         supprimer(doc.id)
-                         alert("Action successfully executed")
-                     } else {
-                         alert("Action canceled")
-                     }
+                $(`#trash${[tableau.length-1]}`).click((e) => {
+
+                    // console.log(doc.id)
+                    e.preventDefault()
+                    supprimer(doc.id)
+                        //  alert("Action successfully executed")
 
                 })
 
@@ -70,12 +96,27 @@ $(document).ready(function() {
         
         db.collection("insec_audio").doc(id).delete()
             .then((docRef) => {
-              console.log("Document deleted")
-              alert("Document deleted")
+                var row = `<div class="alert alert-success" role="alert">
+                    Objet supprimé avec succès !
+                </div>`
+        
+                $('#element').append(row)
+        
+                setTimeout(function () {
+                    $('#element').remove()
+                }, 3000)
         })
             .catch((error) => {
-              console.error("Error deleting document")
-              alert("Error deleting document")
+            //   console.error("Error deleting document")
+              var row = `<div class="alert alert-danger" role="alert">
+                    L'objet n'a pas pu être supprimé !
+                </div>`
+        
+                $('#element').append(row)
+        
+                setTimeout(function () {
+                    $('#element').remove()
+                }, 3000)
         })
 
     }
@@ -83,4 +124,13 @@ $(document).ready(function() {
     //lecture
 
     // etat : lu ou pas ?
+
+    $(window).bind("load", () => {
+        $("#filtre").on("keyup", function() {
+            var value = $(this).val().toLowerCase()
+            $("#data .sl-item").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            })
+        })
+    })
 })

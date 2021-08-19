@@ -8,13 +8,30 @@ $(document).ready(function() {
         .then((querySnapshot) => {
     
             querySnapshot.forEach((doc) => {
-                console.log(doc.data().adress)
+                // console.log(doc.data().adress)
                 tableau.push(doc.id)
 
-                row = `  <div class="col-md-4">
+                row = `  <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 station">
+
                             <div class="card">
+
+                                <h5 class="card-header"><a href="#" >${[doc.data().designation]}</a></h5>
+
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <i class="fa fa-map-marker">  </i>
+                                    </li>
+
+                                    <li class="list-group-item">
+                                        <i class="fa fa-bookmark-o"> ${[doc.data().stationCode]} </i>
+                                    </li>
+
+                                    <li class="list-group-item">
+                                        <i class="fa   fa-phone"> (+ 243) ${[doc.data().phones.DP1]} - ${[doc.data().phones.DP1]} </i>
+                                    </li>
+                                </ul>
+
                                 <div class="card-body">
-                                    <h5 class="card-title"><a href="#" >${[doc.data().designation]}</a></h5>
                                     <p class="card-text"></p>
 
                                     <a href="#" class="btn btn-outline-success" data-toggle="modal" data-target="#${[doc.id]}">
@@ -27,13 +44,31 @@ $(document).ready(function() {
                                     </a>
 
 
-                                    <a href="#" class="btn btn-outline-danger" id="trash${[tableau.length-1]}">
+                                    <a href="#" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal${[tableau.length-1]}" id="${[tableau.length-1]}">
                                             <i class="fa fa-trash"></i>
                                     </a>
                                    
                                 </div>
                             </div>
                         </div> 
+
+                        <div class="modal fade" id="exampleModal${[tableau.length-1]}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel"> Voulez-vous vraiment supprimer cet élément ? </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                            
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                        <button type="button" class="btn btn-primary delete" id="trash${[tableau.length-1]}" data-dismiss="modal">Confirmer</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         
                         <div class="modal fade" id="${[doc.id]}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -90,7 +125,7 @@ $(document).ready(function() {
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary" id="edit${[tableau.length-1]}">Save changes</button>
+                                        <button type="button" class="btn btn-primary" id="edit${[tableau.length-1]}" data-dismiss="modal">Save changes</button>
                                     </div>
                                 </div>
                             </div>
@@ -107,17 +142,10 @@ $(document).ready(function() {
                 })
 
                 $(`#trash${[tableau.length-1]}`).click((e) => {
-                    // confirmer
-                    let confirmAction = confirm("Are you sure to execute this action?")
-
-                    if (confirmAction) {
+                        // confirmer
                         e.preventDefault()
                         supprimer(doc.id)
-                        alert("Action successfully executed")
-                    } else {
-                        e.preventDefault()
-                        alert("Action canceled")
-                    }
+                        // alert("Action successfully executed")
                     
                 })
                 
@@ -145,13 +173,30 @@ $(document).ready(function() {
 
         })
         .then((docRef) => {
-            console.log("Document written with ID: ", docRef.id)
-            alert("Document written")
+            // console.log("Document written with ID: ", docRef.id)
+            var row = `<div class="alert alert-success" role="alert">
+                    Objet ajouté avec succès !
+                </div>`
+        
+                $('#element').append(row)
+        
+                setTimeout(function () {
+                    $('#element').remove()
+                }, 3000)
             // alert()
         })
         .catch((error) => {
-            console.error("Error adding document: ", error)
-            alert("Error adding document")
+            // console.error("Error adding document: ", error)
+            // alert("Error adding document")
+            var row = `<div class="alert alert-danger" role="alert">
+                L'objet n'a pas pu être ajouté !
+            </div>`
+
+            $('#element').append(row)
+
+            setTimeout(function () {
+                $('#element').remove()
+            }, 3000)
             // alert()
         })
     }
@@ -177,12 +222,27 @@ $(document).ready(function() {
 
         })
             .then((docRef) => {
-                console.log("Document updated")
-                alert("Document updated")
+                var row = `<div class="alert alert-success" role="alert">
+                    Objet modifié avec succès !
+                </div>`
+        
+                $('#element').append(row)
+        
+                setTimeout(function () {
+                    $('#element').remove()
+                }, 3000)
             })
             .catch((error) => {
-                console.error("Error updating document: ", error);
-                alert("Error updating document")
+                // console.error("Error updating document: ", error);
+                var row = `<div class="alert alert-danger" role="alert">
+                    L'objet n'a pas pu être modifié !
+                </div>`
+        
+                $('#element').append(row)
+        
+                setTimeout(function () {
+                    $('#element').remove()
+                }, 3000)
             })
 
     }
@@ -193,11 +253,38 @@ $(document).ready(function() {
         
           db.collection("police").doc(id).delete()
             .then((docRef) => {
-                console.log("Document deleted with ID: ", docRef.id);
+                // console.log("Document deleted with ID: ", docRef.id);
+                var row = `<div class="alert alert-success" role="alert">
+                    Objet supprimé avec succès !
+                </div>`
+        
+                $('#element').append(row)
+        
+                setTimeout(function () {
+                    $('#element').remove()
+                }, 3000)
+
             })
             .catch((error) => {
-                console.error("Error deleting document: ", error);
+                var row = `<div class="alert alert-danger" role="alert">
+                    L'objet n'a pas pu être supprimé !
+                </div>`
+        
+                $('#element').append(row)
+        
+                setTimeout(function () {
+                    $('#element').remove()
+                }, 3000)
             })
 
     }
+
+    $(window).bind("load", () => {
+        $("#filtre").on("keyup", function() {
+            var value = $(this).val().toLowerCase()
+            $("#data .col-md-4").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            })
+        })
+    })
 })

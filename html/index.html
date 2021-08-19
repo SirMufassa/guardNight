@@ -11,7 +11,7 @@
     <meta name="description"
         content="Elegant Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>Elegant Admin Lite Template by WrapPixel</title>
+    <title>TULAMUKENI</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/elegant-admin-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
@@ -30,6 +30,8 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+    <script src="dist/js/jquery-3.3.1.min.js"></script> 
 </head>
 
 <body class="skin-default-dark fixed-layout">
@@ -107,7 +109,7 @@
                             </button>
                             
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                              <a class="dropdown-item" href="#">Action</a>
+                              <a class="dropdown-item" href="pages-profile.html">Profile</a>
                               <a class="dropdown-item" href="#" id="logout">logout</a>
                             </div>
                         </div>
@@ -151,8 +153,8 @@
                     <ul id="sidebarnav">
                         <li> <a class="waves-effect waves-dark" href="index.html" aria-expanded="false"><i
                             class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a></li>
-                        <li> <a class="waves-effect waves-dark" href="pages-profile.html" aria-expanded="false"><i
-                                    class="fa fa-user-circle-o"></i><span class="hide-menu">Profile</span></a></li>
+                        <!-- <li> <a class="waves-effect waves-dark" href="pages-profile.html" aria-expanded="false"><i
+                                    class="fa fa-user-circle-o"></i><span class="hide-menu">Profile</span></a></li> -->
                         <li> <a class="waves-effect waves-dark" href="audios.html" aria-expanded="false"><i
                                     class="fa fa-play"></i><span class="hide-menu"></span>Audios</a></li>
                         <li> <a class="waves-effect waves-dark" href="stations.html" aria-expanded="false"><i
@@ -232,27 +234,8 @@
                             <div class="card-body">
                                 <h5 class="card-title">Alertes du jour</h5>
                                 <h6 class="card-subtitle">Verifier les alertes non entendues</h6>
-                                <div class="steamline m-t-40">
+                                <div class="steamline m-t-40" id="alertes">
 
-                                    <div class="sl-item" id=${[tableau.length-1]}>
-                                        <div class="sl-left bg-success"> <i class="fa fa-user"></i></div>
-                                        <div class="sl-right">
-                                            <div><a href="#">SenderPhone</a> <span class="sl-date">5 minutes ago</span>
-                                            </div>
-                                            <div class="desc" id=${[doc.id]}>Approve meeting with tiger
-                                                <br>
-                                                <a href="javascript:void(0)"
-                                                    class="btn m-t-10 m-r-5 btn-rounded btn-outline-success" id="edit${[tableau.length-1]}">
-                                                    <i class="fa fa-play-circle-o"></i></a>
-                                                </a>
-                                                <a href="javascript:void(0)"
-                                                    class="btn m-t-10 btn-rounded btn-outline-danger" id="trash${[tableau.length-1]}">
-                                                    <i class="fa fa-trash"></i></a>
-                                                </a> 
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
                                 </div>
                             </div>
                         </div>
@@ -271,14 +254,14 @@
                                         <h5 class="card-title">Stations Police</h5>
                                         <!-- <h6 class="card-subtitle">Check the monthly sales </h6> -->
                                     </div>
-                                    <div class="ml-auto">
+                                    <!-- <div class="ml-auto">
                                         <select class="custom-select b-0">
                                             <option>January</option>
                                             <option value="1">February</option>
                                             <option value="2" selected="">March</option>
                                             <option value="3">April</option>
                                         </select>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <div class="table-responsive">
@@ -289,45 +272,11 @@
                                             <th>Designation</th>
                                             <th>Phone DP1</th>
                                             <th>Phone DP2</th>
-                                            <th>Staion Code</th>
+                                            <th>Station Code</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="text-center">1</td>
-                                            <td class="txt-oflo">Elite admin</td>
-                                            <td class="txt-oflo">April 18, 2017</td>
-                                            <td><span class="text-success">$24</span></td>
-                                            <td><span class="text-success">$24</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">2</td>
-                                            <td class="txt-oflo">Real Homes WP Theme</td>
-                                            <td class="txt-oflo">April 19, 2017</td>
-                                            <td><span class="text-info">$1250</span></td>
-                                            <td><span class="text-success">$24</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">3</td>
-                                            <td class="txt-oflo">Ample Admin</td>
-                                            <td class="txt-oflo">April 19, 2017</td>
-                                            <td><span class="text-info">$1250</span></td>
-                                            <td><span class="text-success">$24</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">4</td>
-                                            <td class="txt-oflo">Medical Pro WP Theme</td>
-                                            <td class="txt-oflo">April 20, 2017</td>
-                                            <td><span class="text-danger">-$24</span></td>
-                                            <td><span class="text-success">$24</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">9</td>
-                                            <td class="txt-oflo">Ample Admin</td>
-                                            <td class="txt-oflo">April 19, 2017</td>
-                                            <td><span class="text-info">$1250</span></td>
-                                            <td><span class="text-success">$24</span></td>
-                                        </tr>
+                                    <tbody id="polices">
+                
                                     </tbody>
                                 </table>
                             </div>
@@ -344,58 +293,10 @@
                             <div class="card-body">
                                 <h5 class="card-title"> Nouveaux utilisateurs </h5>
                                 <div class="message-box">
-                                    <div class="message-widget message-scroll">
+                                    <div class="message-widget message-scroll" id="users">
                                         <!-- Message -->
-                                        <a href="javascript:void(0)">
-                                            <div class="user-img"> <img src="../assets/images/users/1.jpg" alt="user"
-                                                    class="img-circle"> <span
-                                                    class="profile-status online pull-right"></span> </div>
-                                            <div class="mail-contnet">
-                                                <h5>Pavan kumar</h5> <span class="mail-desc">Lorem Ipsum is simply dummy
-                                                    text of the printing and type setting industry. Lorem Ipsum has
-                                                    been.</span> <span class="time">9:30 AM</span>
-                                            </div>
-                                        </a>
+                                   
                    
-                                        <a href="javascript:void(0)">
-                                            <div class="user-img"> <span class="round">A</span> <span
-                                                    class="profile-status away pull-right"></span> </div>
-                                            <div class="mail-contnet">
-                                                <h5>Arijit Sinh</h5> <span class="mail-desc">Simply dummy text of the
-                                                    printing and typesetting industry.</span> <span class="time">9:08
-                                                    AM</span>
-                                            </div>
-                                        </a>
-                                        <!-- Message -->
-                                        <a href="javascript:void(0)">
-                                            <div class="user-img"> <img src="../assets/images/users/4.jpg" alt="user"
-                                                    class="img-circle"> <span
-                                                    class="profile-status offline pull-right"></span> </div>
-                                            <div class="mail-contnet">
-                                                <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my
-                                                    admin!</span> <span class="time">9:02 AM</span>
-                                            </div>
-                                        </a>
-                                        <!-- Message -->
-                                        <a href="javascript:void(0)">
-                                            <div class="user-img"> <img src="../assets/images/users/1.jpg" alt="user"
-                                                    class="img-circle"> <span
-                                                    class="profile-status online pull-right"></span> </div>
-                                            <div class="mail-contnet">
-                                                <h5>Pavan kumar</h5> <span class="mail-desc">Welcome to the Elite
-                                                    Admin</span> <span class="time">9:30 AM</span>
-                                            </div>
-                                        </a>
-                                        <!-- Message -->
-                                        <a href="javascript:void(0)">
-                                            <div class="user-img"> <img src="../assets/images/users/2.jpg" alt="user"
-                                                    class="img-circle"> <span
-                                                    class="profile-status busy pull-right"></span> </div>
-                                            <div class="mail-contnet">
-                                                <h5>Sonu Nigam</h5> <span class="mail-desc">I've sung a song! See you
-                                                    at</span> <span class="time">9:10 AM</span>
-                                            </div>
-                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -457,6 +358,7 @@
 	<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
 
     <script src="dist/data/configuration.js"></script>
+    <script src="dist/data/index.js"></script>
     <script src="dist/data/logout.js"></script>
 
 </body>
