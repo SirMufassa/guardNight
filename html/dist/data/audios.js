@@ -13,6 +13,7 @@ $(document).ready(function() {
                 
                 // if(doc.id === 'new') return;
                 tableau.push(1)
+                // console.log(doc.data())
 
                 row = `  <div class="sl-item" id=${[tableau.length-1]}>
                             <div class="sl-left bg-success"> <i class="fa fa-user"></i></div>
@@ -28,20 +29,37 @@ $(document).ready(function() {
 
                                     <br>
                                     
-                                    <a href="${doc.data().remotePath}" download="audio${[doc.data().senderPhone]}"
-                                        class="btn m-t-10 m-r-5 btn-rounded btn-outline-success" id="download${[tableau.length-1]}">
-                                        <i class="fa  fa-download"></i></a>
-                                    </a>
+                                    <div class="row">
+                                    
+                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
 
-                                    <a href="javascript:void(0)"
-                                        class="btn m-t-10 m-r-5 btn-rounded btn-outline-warning">
-                                        <i class="fa fa-map"></i></a>
-                                    </a>
+                                            <a href="${doc.data().remotePath}" download="audio${[doc.data().senderPhone]}"
+                                                class="btn m-t-10 m-r-5 btn-rounded btn-outline-success" id="download${[tableau.length-1]}">
+                                                <i class="fa  fa-download"></i></a>
+                                            </a>
+                                        
+                                        </div>
 
-                                    <a href="javascript:void(0)"
-                                        class="btn m-t-10 btn-rounded btn-outline-danger" data-toggle="modal" data-target="#exampleModal${[tableau.length-1]}" id="${[tableau.length-1]}">
-                                        <i class="fa fa-trash"></i></a>
-                                    </a> 
+                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+
+                                            <a href="javascript:void(0)"
+                                                class="btn m-t-10 m-r-5 btn-rounded btn-outline-warning"
+                                                id="map${[tableau.length-1]}">
+                                                <i class="fa fa-map"></i></a>
+                                            </a>
+
+                                        </div>
+
+                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+
+                                            <a href="javascript:void(0)"
+                                                class="btn m-t-10 btn-rounded btn-outline-danger" data-toggle="modal" data-target="#exampleModal${[tableau.length-1]}" id="${[tableau.length-1]}">
+                                                <i class="fa fa-trash"></i></a>
+                                            </a> 
+
+                                        </div>
+
+                                    </div>
 
                                     <div class="modal fade" id="exampleModal${[tableau.length-1]}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
@@ -81,6 +99,10 @@ $(document).ready(function() {
                     supprimer(doc.id)
                         //  alert("Action successfully executed")
 
+                })
+
+                $(`#map${[tableau.length-1]}`).click((e) => {
+                    newLocation(doc.data().geoPoint._lat, doc.data().geoPoint._long)
                 })
 
             })
