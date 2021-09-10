@@ -11,19 +11,19 @@ $(document).ready(function() {
 
                 // avoid show the document with ID new, it's for debug purpose only
                 
-                if(doc.id === 'new') return;
+                // if(doc.id === 'new') return;
                 tableau.push(1)
 
                 row = `  <div class="sl-item" id=${[tableau.length-1]}>
                             <div class="sl-left bg-success"> <i class="fa fa-user"></i></div>
                             <div class="sl-right">
-                                <div><a href="#">${[doc.data().senderPhone]}</a> <span class="sl-date">5 minutes ago</span>
+                                <div><a href="#">${[doc.data().user.username]} ${[doc.data().senderPhone]}</a> <span class="sl-date">5 minutes ago</span>
                                 </div>
-                                <div class="desc" id=${[doc.id]}>Approve meeting with tiger
+                                <div class="desc" id=${[doc.id]}>
                                     <br>
 
                                         <audio controls>
-                                            <source src="test1.mp3" type="audio/mp3"> 
+                                            <source src="${doc.data().remotePath}.mp3" type="audio/mp3"> 
                                         </audio>
 
                                     <br>
