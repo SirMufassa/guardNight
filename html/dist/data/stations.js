@@ -8,10 +8,10 @@ $(document).ready(function() {
         .then((querySnapshot) => {
     
             querySnapshot.forEach((doc) => {
-                // console.log(doc.data().adress)
+                console.log(doc.data().geopoint)
                 tableau.push(doc.id)
 
-                row = `  <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 station">
+                row = `  <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 station">
 
                             <div class="card">
 
@@ -39,7 +39,8 @@ $(document).ready(function() {
                                     </a>
 
 
-                                    <a href="#" class="btn btn-outline-warning">
+                                    <a href="#" class="btn btn-outline-warning"
+                                        id="map${[tableau.length-1]}">
                                         <i class="fa fa-map"></i>
                                     </a>
 
@@ -147,6 +148,10 @@ $(document).ready(function() {
                         supprimer(doc.id)
                         // alert("Action successfully executed")
                     
+                })
+
+                $(`#map${[tableau.length-1]}`).click((e) => {
+                    newLocation(doc.data().geopoint._lat, doc.data().geopoint._long)
                 })
                 
             })

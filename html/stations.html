@@ -25,6 +25,13 @@
 <![endif]-->
 
     <script src="dist/js/jquery-3.3.1.min.js"></script>
+    
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
 
 </head>
 
@@ -187,8 +194,21 @@
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
-                <div class="row" id="data">
-                    
+                <div class="row">
+
+                    <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
+                        <div class="row" id="data"></div>
+                    </div>
+
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="" id="map">
+                         
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
                 <!-- ============================================================== -->
@@ -291,6 +311,14 @@
         <!-- End footer -->
         <!-- ============================================================== -->
     </div>
+
+    <script src="dist/data/map.js"></script>
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeHF4wjkOLuSKtDZNGpkStrbmkhGpjR4Y&callback=initMap&libraries=&v=weekly"
+        async>
+    </script>
+
     <!-- ============================================================== -->
     <!-- End Wrapper -->
     <!-- ============================================================== -->
