@@ -1,0 +1,39 @@
+<div class="card">
+
+                        <h5 class="card-header"><a href="#" >${[doc.data().designation]}</a></h5>
+
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <i class="fa fa-map-marker">  </i>
+                            </li>
+
+                            <li class="list-group-item">
+                                <i class="fa fa-bookmark-o"> ${[doc.data().stationCode]} </i>
+                            </li>
+
+                            <li class="list-group-item">
+                                <i class="fa   fa-phone"> (+ 243) ${[doc.data().phones.DP1]} - ${[doc.data().phones.DP1]} </i>
+                            </li>
+                        </ul>
+
+                        <div class="card-body">
+                            <p class="card-text"></p>
+
+                            <a href="#" class="btn btn-outline-success" data-toggle="modal" data-target="#${[doc.id]}">
+                                    <i class="fa fa-edit"></i>
+                            </a>
+
+
+                            <a href="#" class="btn btn-outline-warning"
+                                id="map${[tableau.length-1]}">
+                                <i class="fa fa-map"></i>
+                            </a>
+
+
+                            <a href="#" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal${[tableau.length-1]}" id="${[tableau.length-1]}">
+                                    <i class="fa fa-trash"></i>
+                            </a>
+                           
+                        </div>
+                    </div>
+                </div> 

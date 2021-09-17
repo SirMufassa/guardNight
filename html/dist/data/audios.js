@@ -2,14 +2,103 @@ $(document).ready(function() {
 
     var row = ``
     var tableau = []
+    let lastDoc = null
+    let firstDoc = null
 
-    //get all
-    db.collection("insec_audio").get()
+    const first = db.collection("insec_audio").orderBy('user.username').limit(10).get()
+
+    first
         .then((querySnapshot) => {
-    
-            querySnapshot.forEach((doc) => {
 
-                // avoid show the document with ID new, it's for debug purpose only
+            lastDoc = querySnapshot.docs[querySnapshot.docs.length-1] || null
+            firstDoc = querySnapshot.docs[0] || null
+
+            $('#data').empty()
+
+            querySnapshot.forEach((doc) => {
+                showList(doc)
+
+            })
+        })
+        .catch(error => {
+            console.log(error)
+        })
+
+
+    function previousPage() {
+
+        const next = db.collection("insec_audio").orderBy('user.username').endBefore(firstDoc).limit(10).get()
+
+        next
+            .then((querySnapshot) => {
+
+                lastDoc = querySnapshot.docs[querySnapshot.docs.length-1] || null
+                firstDoc = querySnapshot.docs[0] || null
+
+                $('#data').empty()
+
+                querySnapshot.forEach((doc) => {
+                    showList(doc)
+                    console.log(doc.id)
+                })
+            })
+            .catch(error => {
+                console.log(error)
+            })
+     
+    }
+
+    function nextPage(){
+
+        const next = db.collection("insec_audio").orderBy('user.username').startAfter(lastDoc).limit(10).get()
+
+        next
+            .then((querySnapshot) => {
+
+                lastDoc = querySnapshot.docs[querySnapshot.docs.length-1] || null
+                firstDoc = querySnapshot.docs[0] || null
+
+                $('#data').empty()
+
+                querySnapshot.forEach((doc) => {
+                    showList(doc)
+                    console.log(doc.id)
+                })
+            })
+            .catch(error => {
+                console.log(error)
+            })
+
+    }
+
+        $(`#next`).click((e) => {
+
+            // if(lastDoc === null){
+            //     $(`#nex`).addClass("disabled")
+            // }
+         
+            // if(firstDoc !== null){
+            //     $(`#prev`).removeClass("disabled")
+            // }
+
+            nextPage()
+        })
+
+        $(`#previous`).click((e) => {
+
+            // if(firstDoc === null){
+            //     $(`#prev`).addClass("disabled")
+            // } 
+            // if(lastDoc !== null){
+            //     $(`#nex`).removeClass("disabled")
+            // }
+
+            previousPage()
+        })
+    
+    //affichage des elements
+    function showList(doc){
+        // avoid show the document with ID new, it's for debug purpose only
                 
                 // if(doc.id === 'new') return;
                 tableau.push(1)
@@ -104,16 +193,9 @@ $(document).ready(function() {
                 $(`#map${[tableau.length-1]}`).click((e) => {
                     newLocation(doc.data().geoPoint._lat, doc.data().geoPoint._long)
                 })
-
-            })
-        })
-        
-        .catch((err) => {
-            console.log(err)
-        })
+    }
 
     //delete
-
     function supprimer(id){
         
         db.collection("insec_audio").doc(id).delete()
