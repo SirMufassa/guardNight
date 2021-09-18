@@ -27,12 +27,12 @@ $(document).ready(function() {
     function showList(doc) {
         tableau.push(doc.id)
 
-        row = `  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 station">
+        row = `  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 station" style="padding: 0; margin-bottom: 5px;">
 
                     <a href="#" class="list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">${[doc.data().designation]}</h5>
-                            <small> 👮🏾‍♂️ Station Police</small>
+                            <small> 👮🏾‍♂️ Station </small>
                         </div>
                         <p class="mb-1">
                             <i class="fa fa-phone"> <strong> Telephone : </strong> (+ 243) ${[doc.data().phones.DP1]} - ${[doc.data().phones.DP1]} </i> <br> 
@@ -131,8 +131,8 @@ $(document).ready(function() {
 
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary" id="edit${[tableau.length-1]}" data-dismiss="modal">Save changes</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                    <button type="button" class="btn btn-primary" id="edit${[tableau.length-1]}" data-dismiss="modal">Confirmer</button>
                                 </div>
                             </div>
                         </div>

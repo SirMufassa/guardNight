@@ -177,8 +177,21 @@
                 <!-- ============================================================== -->
                 <div class="row page-titles">
                     <div class="col-md-5 align-self-center">
-                        <h4 class="text-themecolor">Stations Police</h4>
+                        <!-- <h4 class="text-themecolor">Stations Police</h4> -->
+
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Filtre
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </div>
+
                     </div>
+                    
                     <div class="col-md-7 align-self-center text-right">
                         <div class="d-flex justify-content-end align-items-center">
                             <ol class="breadcrumb">
@@ -264,6 +277,7 @@
             <!-- ============================================================== -->
 
             <div class="container-fluid">
+
                 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" aria-pressed="false" autocomplete="off" 
                 style=" position: absolute; bottom: 0; border-radius: 50%; margin-right: 20px; margin-bottom: 5px; right: 0;"
                 data-target="#exampleModal">
@@ -335,8 +349,8 @@
 
                     </div>
                     <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="ajouter">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-primary" id="ajouter">Confirmer</button>
                     </div>
                 </div>
                 </div>

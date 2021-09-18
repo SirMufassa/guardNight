@@ -99,7 +99,14 @@ $(document).ready(function() {
     //affichage des elements
     function showList(doc){
         // avoid show the document with ID new, it's for debug purpose only
-                
+    
+                let month = doc.data().timestamp.toDate().getMonth() + 1
+                let year = doc.data().timestamp.toDate().getFullYear()
+                let jour = doc.data().timestamp.toDate().getDate()
+                let heure = doc.data().timestamp.toDate().getHours()
+                let minute = doc.data().timestamp.toDate().getMinutes()
+
+                // console.log(jour + '-' + month + '-' + year)
                 // if(doc.id === 'new') return;
                 tableau.push(1)
                 // console.log(doc.data())
@@ -107,7 +114,7 @@ $(document).ready(function() {
                 row = `  <div class="sl-item" id=${[tableau.length-1]}>
                             <div class="sl-left bg-success"> <i class="fa fa-user"></i></div>
                             <div class="sl-right">
-                                <div><a href="#">${[doc.data().user.username]} ${[doc.data().senderPhone]}</a> <span class="sl-date">5 minutes ago</span>
+                                <div><a href="#">${[doc.data().user.username]} ${[doc.data().senderPhone]}</a> <span class="sl-date"> ${jour} - ${month} - ${year} à ${heure} : ${minute}  </span>
                                 </div>
                                 <div class="desc" id=${[doc.id]}>
                                     <br>
@@ -120,16 +127,16 @@ $(document).ready(function() {
                                     
                                     <div class="row">
                                     
-                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+                                        <!-- <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4"> -->
 
                                             <a href="${doc.data().remotePath}" download="audio${[doc.data().senderPhone]}"
                                                 class="btn m-t-10 m-r-5 btn-rounded btn-outline-success" id="download${[tableau.length-1]}">
                                                 <i class="fa  fa-download"></i></a>
                                             </a>
                                         
-                                        </div>
+                                            <!--</div> -->
 
-                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+                                            <!-- <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4"> -->
 
                                             <a href="javascript:void(0)"
                                                 class="btn m-t-10 m-r-5 btn-rounded btn-outline-warning"
@@ -137,16 +144,16 @@ $(document).ready(function() {
                                                 <i class="fa fa-map"></i></a>
                                             </a>
 
-                                        </div>
+                                            <!--</div> -->
 
-                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+                                            <!--<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4"> -->
 
                                             <a href="javascript:void(0)"
                                                 class="btn m-t-10 btn-rounded btn-outline-danger" data-toggle="modal" data-target="#exampleModal${[tableau.length-1]}" id="${[tableau.length-1]}">
                                                 <i class="fa fa-trash"></i></a>
                                             </a> 
 
-                                        </div>
+                                            <!--</div> -->
 
                                     </div>
 
